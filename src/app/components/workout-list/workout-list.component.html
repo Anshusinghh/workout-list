@@ -1,0 +1,8 @@
+<h2>Workout List</h2>
+<input [(ngModel)]="searchQuery" (input)="searchWorkouts()" placeholder="Search by Name" />
+   
+<ul>
+  <li *ngFor="let workout of filteredWorkouts">
+    <strong>{{ workout.id }} - {{ workout.name }}</strong> - {{ workout.type }} ({{ workout.duration }} mins)
+  </li>
+</ul>

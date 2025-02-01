@@ -1,0 +1,10 @@
+<h2>Add Workout</h2>
+<input [(ngModel)]="name" placeholder="Workout Name" />
+<select [(ngModel)]="type">
+  <option value="">Select Type</option>
+  <option value="Cardio">Cardio</option>
+  <option value="Strength">Strength</option>
+  <option value="Flexibility">Flexibility</option>
+</select>
+<input [(ngModel)]="duration" type="number" placeholder="Duration (mins)" />
+<button (click)="addWorkout()">Add</button>
