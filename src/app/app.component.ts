@@ -4,10 +4,22 @@ import { WorkoutFormComponent } from './components/workout-form/workout-form.com
 import { WorkoutListComponent } from './components/workout-list/workout-list.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { MatTableModule } from '@angular/material/table';  // For Table
+import { MatPaginatorModule } from '@angular/material/paginator';  // For Pagination
+import { MatInputModule } from '@angular/material/input'; // For Input field
+import { MatSelectModule } from '@angular/material/select'; // For Select Dropdown
+import { MatButtonModule } from '@angular/material/button'; // For Button
+
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,FormsModule,CommonModule,WorkoutFormComponent, WorkoutListComponent],
+  imports: [FormsModule,CommonModule,WorkoutFormComponent, WorkoutListComponent,
+            MatTableModule,
+            MatButtonModule,
+            MatInputModule,
+            MatSelectModule,
+            MatPaginatorModule
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

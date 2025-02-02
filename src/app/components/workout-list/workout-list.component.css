@@ -1,0 +1,17 @@
+.pagination-controls {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  
+  .pagination-controls button {
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .pagination-controls input {
+    width: 50px;
+    padding: 5px;
+    text-align: center;
+  }
+  
