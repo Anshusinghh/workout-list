@@ -3,6 +3,21 @@
   <input id="search" type="text" [(ngModel)]="searchQuery" (input)="searchWorkouts()" placeholder="Search for a person"
   />
 </div>
+<div>
+  <!-- Filter by workout type -->
+  <label for="type">Filter by Workout Type:</label>
+  <select
+    id="type"
+    [(ngModel)]="selectedType"
+    (change)="filterByType()"  
+  >
+    <option value="">All Types</option> 
+    <option value="Cardio">Cardio</option>
+    <option value="Strength">Strength</option>
+    <option value="Flexibility">Flexibility</option>
+    
+  </select>
+</div>
 <table border="1" cellspacing="0" cellpadding="10">
   <thead>
     <tr>

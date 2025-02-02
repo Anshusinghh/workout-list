@@ -40,6 +40,21 @@ export class WorkoutListComponent implements OnInit{
     this.filteredWorkouts = this.workouts.filter(workout =>
       workout.name.toLowerCase().includes(this.searchQuery.toLowerCase())
     );
+    
+  }
+
+  filterByType() {
+    if(!this.searchQuery){
+    if (this.selectedType && this.selectedType !== '') {
+      this.filteredWorkouts = this.filteredWorkouts.filter(workout =>
+        workout.type.includes(this.selectedType) // Filter by workout type
+      );
+    } else {
+      // If "All Types" or empty is selected, show all workouts
+      this.filteredWorkouts = [...this.workouts];
+    }
+  }
+
   }
 
   // Get the count of workouts for each person
