@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Workout } from '../models/workout.model';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject,Subject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -9,6 +9,8 @@ export class WorkoutService {
   private storageKey: string = 'workouts';
   private workoutsSubject = new BehaviorSubject<Workout[]>(this.getWorkouts());
   workouts$ = this.workoutsSubject.asObservable();
+
+  workoutUpdated$ = new Subject<void>(); // Notify components when updated
 
   constructor() {
     // Initialize localStorage with an empty array if no data exists
@@ -42,9 +44,9 @@ export class WorkoutService {
   // Save workouts to localStorage
   saveWorkouts(workouts: Workout[]): void {
 
-    console.log("Saving workouts and notifying subscribers:", workouts);
     localStorage.setItem('workouts', JSON.stringify(workouts));
     this.workoutsSubject.next(workouts); // Notify components
+    this.workoutUpdated$.next(); // Notify workout list
   }
 
   // Add a new workout with a unique ID

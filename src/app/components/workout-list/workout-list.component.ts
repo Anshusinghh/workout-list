@@ -12,26 +12,43 @@ import { ChangeDetectorRef } from '@angular/core';
   templateUrl: './workout-list.component.html',
   styleUrls: ['./workout-list.component.css']
 })
-export class WorkoutListComponent {
+export class WorkoutListComponent implements OnInit{
   workouts: Workout[] = [];
   filteredWorkouts: Workout[] = [];
+  selectedType: string = ''; 
   searchQuery: string = '';
 
-  constructor(private workoutService: WorkoutService,private cdRef: ChangeDetectorRef) {
-    this.workouts = this.workoutService.getWorkouts();
-    this.filteredWorkouts = this.workouts;
-  }
+  constructor(private workoutService: WorkoutService) {}
+
   
   ngOnInit() {
-    this.workoutService.workouts$.subscribe(workouts => {
-      this.workouts = workouts;
-      this.cdRef.detectChanges();
+    this.loadWorkouts();
+
+    // Listen for updates from WorkoutService
+    this.workoutService.workoutUpdated$.subscribe(() => {
+      this.loadWorkouts();
     });
+  }
+
+  loadWorkouts() {
+    this.workouts = this.workoutService.getWorkouts();
+    this.filteredWorkouts = [...this.workouts];  // Initially show all workouts
+    
   }
 
   searchWorkouts() {
     this.filteredWorkouts = this.workouts.filter(workout =>
       workout.name.toLowerCase().includes(this.searchQuery.toLowerCase())
     );
+  }
+
+  // Get the count of workouts for each person
+  getWorkoutCount(workout: Workout): number {
+    return workout.type.length;
+  }
+
+  // Get total duration for each person
+  getTotalDuration(workout: Workout): number {
+    return workout.duration.reduce((acc, d) => acc + d, 0);
   }
 }
