@@ -1,10 +1,17 @@
-<h2>Add Workout</h2>
-<input [(ngModel)]="name" placeholder="Workout Name" />
-<select [(ngModel)]="type">
-  <option value="">Select Type</option>
-  <option value="Cardio">Cardio</option>
-  <option value="Strength">Strength</option>
-  <option value="Flexibility">Flexibility</option>
-</select>
-<input [(ngModel)]="duration" type="number" placeholder="Duration (mins)" />
-<button (click)="addWorkout()">Add</button>
+
+
+<div class="bg-white shadow-lg rounded-lg p-6 mb-6">
+  <!-- <h2 class="text-xl font-semibold mb-4">Add Workout</h2> -->
+  <form class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <input type="text" [(ngModel)]="name" placeholder="Person's Name" 
+      class="border p-2 rounded-lg w-full focus:ring focus:ring-blue-300">
+    <input type="text" [(ngModel)]="type" placeholder="Workout Type" 
+      class="border p-2 rounded-lg w-full focus:ring focus:ring-blue-300">
+    <input type="number" [(ngModel)]="duration" placeholder="Duration (min)" 
+      class="border p-2 rounded-lg w-full focus:ring focus:ring-blue-300">
+    <button type="button" (click)="addWorkout()" 
+      class="col-span-1 md:col-span-3 bg-gray-700 text-white p-2 rounded-lg hover:bg-gray-800 transition w-full">
+      Add Workout
+    </button>
+  </form>
+</div>
