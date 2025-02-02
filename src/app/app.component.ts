@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { WorkoutFormComponent } from './components/workout-form/workout-form.component';
 import { WorkoutListComponent } from './components/workout-list/workout-list.component';
