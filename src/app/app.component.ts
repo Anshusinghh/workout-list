@@ -24,5 +24,5 @@ import { MatButtonModule } from '@angular/material/button'; // For Button
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'workout-list';
+  title = 'Workout Title';
 }
